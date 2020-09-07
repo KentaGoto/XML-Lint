@@ -42,6 +42,11 @@ $(function(){
 <input type="submit" name="_upload" value="Upload" onclick="return Valid();">
 </form>
 
+<hr size="1">
+<h2>README</h2>
+<li>The types of files that will be accepted as uploads are sdlrpx, xlz, wsxz and zip.</li>
+<li>Execute xmllint on the sdlxliff, xml or xlf files in the above file.</li>
+
 <?php
 $cwd = getcwd();
 $path = './temp';
