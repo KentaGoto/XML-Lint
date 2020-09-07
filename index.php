@@ -34,7 +34,7 @@ if (isset($_POST['_upload'])) {
 
 		// Run xmllint if you have the sdlxliff file
 		foreach ($files as $f){
-			if ( preg_match('/\.sdlxliff$/', $f) ){
+			if ( preg_match('/\.(?:sdlxliff|xlf|xml)$/', $f) ){
 				$real_p = realpath($f);
 				shell_exec("xmllint --format --huge \"$real_p\" --output \"$real_p\"");
 			}
