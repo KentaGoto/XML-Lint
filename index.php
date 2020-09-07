@@ -40,11 +40,8 @@ if (isset($_POST['_upload'])) {
 			}
 		}
 
-		echo 'ok' . '<br />';
 		chdir($proc_folder);
-		echo $proc_folder . '<br />';
 		shell_exec("zip -r \"$filename\" *");
-		echo 'kokomadekita<br />';
 
 		// Download
 		mb_http_output( "pass" ) ;
