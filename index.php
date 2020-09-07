@@ -1,14 +1,44 @@
-<html lang="ja">
+<!DOCTYPE html> 
+<html>
 <head>
 <meta charset="utf-8">
-</head>
-<body>
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'></script>
+<script type="text/javascript">
+// File determination
+function Valid(){
+	if(document.form.file.value == ""){
+		alert('Please select a file.');
+		return false;
+	}
 
+	re = new RegExp(".*xlz$|.*sdlrpx$|.*wsxz$|.*zip$", "i");
+	if(document.form.file.value.search(re) == -1){
+		alert('Choose xlz, sdlrpx, wsxz or zip format.');
+		return false;
+	}
+}
+// Alert when the specified bytes are exceeded
+$(function(){
+    $('input[type=file]').change(function(){
+        if($(this).val()){
+            var file = $(this).prop('files')[0];
+            file_size = file.size;
+        }
+		if(209715200 < file_size){
+            alert('You cannot upload a file that is larger than 200MB.');
+            $(this).val('');
+        }
+    });
+});
+</script>
+</head>
+
+<body>
 <h1>XML-Lint</h1>
-<form enctype="multipart/form-data" method="post">
+<form name="form" enctype="multipart/form-data" method="post">
 <input type="hidden" name="MAX_FILE_SIZE" value="104857600">
-<input name="file" type="file">
-<input type="submit" name="_upload" value="Upload">
+<input name="file" type="file" id="file1" accept=".zip,.sdlrpx,.xlz,.wsxz">
+<input type="submit" name="_upload" value="Upload" onclick="return Valid();">
 </form>
 
 <?php
@@ -70,5 +100,6 @@ function getFiles($path) {
 }
 
 ?>
+
 </body>
 </html>
