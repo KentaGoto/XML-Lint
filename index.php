@@ -62,7 +62,7 @@ if (isset($_POST['_upload'])) {
 		$proc_folder = "$path/$folder";
 
 		chdir($proc_folder);
-		shell_exec("unzip $filename");
+		shell_exec("unzip \"$filename\"");
 		unlink($filename);
 		chdir($cwd);
 
