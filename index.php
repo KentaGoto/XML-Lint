@@ -53,7 +53,6 @@ if (isset($_POST['_upload'])) {
 	$file_fullpath = "$path/$folder/$filename";
 
 	if (move_uploaded_file($_FILES['file']['tmp_name'], $file_fullpath)) {
-		// echo $_FILES['file']['name'] . 'をアップロードしました' . '<br />';
 		$proc_folder = "$path/$folder";
 
 		chdir($proc_folder);
