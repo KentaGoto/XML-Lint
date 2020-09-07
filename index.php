@@ -45,9 +45,15 @@ $(function(){
 <?php
 $cwd = getcwd();
 $path = './temp';
+if (file_exists($path)){
+	// not doing
+} else{
+	mkdir($path, 0777);
+}
 if (isset($_POST['_upload'])) {
 	$filename = $_FILES['file']['name'];
 	$folder = date('Ymdhis');
+	
 	mkdir("$path/$folder", 0777);
 
 	$file_fullpath = "$path/$folder/$filename";
