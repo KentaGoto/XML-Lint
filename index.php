@@ -73,24 +73,26 @@ if (isset($_POST['_upload'])) {
 
 		$files = getFiles($proc_folder);
 
-		// Run xmllint if you have the sdlxliff file
-		foreach ($files as $f){
-			if ( preg_match('/\.(?:sdlxliff|xlf|xml)$/', $f) ){
-				$real_p = realpath($f);
-				shell_exec("xmllint --format --huge \"$real_p\" --output \"$real_p\"");
-			}
-		}
+		xmllint($files); // Run xmllint
 
 		chdir($proc_folder);
 		shell_exec("zip -r \"$filename\" *");
 
-		// Download
-		download($filename);
+		download($filename); // Download
 
 		exit;
 	} else {
 		//Error
 		echo 'It could not be uploaded' . '<br />';
+	}
+}
+
+function xmllint($files){
+	foreach ($files as $f){
+		if ( preg_match('/\.(?:sdlxliff|xlf|xml)$/', $f) ){
+			$real_p = realpath($f);
+			shell_exec("xmllint --format --huge \"$real_p\" --output \"$real_p\"");
+		}
 	}
 }
 
