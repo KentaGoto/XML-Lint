@@ -58,11 +58,12 @@ if (file_exists($path)){
 if (isset($_POST['_upload'])) {
 	$filename = $_FILES['file']['name'];
 	$folder = date('Ymdhis');
-	
 	mkdir("$path/$folder", 0777);
-
 	$file_fullpath = "$path/$folder/$filename";
+	mainProcess($file_fullpath, $path, $folder, $filename, $cwd);
+}
 
+function mainProcess($file_fullpath, $path, $folder, $filename, $cwd){
 	if (move_uploaded_file($_FILES['file']['tmp_name'], $file_fullpath)) {
 		$proc_folder = "$path/$folder";
 
