@@ -85,18 +85,23 @@ if (isset($_POST['_upload'])) {
 		shell_exec("zip -r \"$filename\" *");
 
 		// Download
-		mb_http_output( "pass" ) ;
-		header("Content-Type: application/octet-stream");
-		header("Content-Transfer-Encoding: Binary");
-		header("Content-Length: ".filesize($filename));
-		header('Content-Disposition: attachment; filename*=UTF-8\'\'' . $filename);
-		ob_end_clean();
-		readfile($filename);
+		download($filename);
+
 		exit;
 	} else {
 		//Error
 		echo 'It could not be uploaded' . '<br />';
 	}
+}
+
+function download($filename){
+	mb_http_output( "pass" ) ;
+	header("Content-Type: application/octet-stream");
+	header("Content-Transfer-Encoding: Binary");
+	header("Content-Length: ".filesize($filename));
+	header('Content-Disposition: attachment; filename*=UTF-8\'\'' . $filename);
+	ob_end_clean();
+	readfile($filename);
 }
 
 function getFiles($path) {
