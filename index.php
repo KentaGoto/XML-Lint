@@ -20,16 +20,16 @@ function Valid(){
 // Alert when the specified bytes are exceeded
 limit_size = 209715200;
 $(function(){
-    $('input[type=file]').change(function(){
-        if($(this).val()){
-            var file = $(this).prop('files')[0];
-            file_size = file.size;
-        }
+	$('input[type=file]').change(function(){
+		if($(this).val()){
+			var file = $(this).prop('files')[0];
+			file_size = file.size;
+			
 		if(limit_size < file_size){
-            alert('You cannot upload a file that is larger than 200MB.');
-            $(this).val('');
-        }
-    });
+			alert('You cannot upload a file that is larger than 200MB.');
+			$(this).val('');
+		}
+	});
 });
 </script>
 </head>
