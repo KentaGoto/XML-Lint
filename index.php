@@ -109,7 +109,16 @@ function xmllint($files){
 }
 
 function download($filename, $proc_folder){
-	echo '<hr size="1" color="blue">';
+	echo '<hr size="5" color="#FFD5EC">';
+	// echo '<hr size="5" color="#FFBEDA">';
+	// echo '<hr size="5" color="#FFABCE">';
+	// echo '<hr size="5" color="#FF97C2">';
+	// echo '<hr size="5" color="#FF82B2">';
+	// echo '<hr size="5" color="#FF69A3">';
+	// echo '<hr size="5" color="#FF5192">';
+	// echo '<hr size="5" color="#FF367F">';
+	// echo '<hr size="5" color="#FF1A6F">';
+	// echo '<hr size="5" color="#FF0461">';
 	echo '<p><strong>Download: </strong><br />';
 	echo "<a href=\"$proc_folder/$filename\">" . "$filename" . '</a>';
 }
