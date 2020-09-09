@@ -6,16 +6,26 @@
 <script type="text/javascript">
 // File determination
 function Valid(){
+	var valid_flag = 0;
 	if(document.form.file.value == ""){
 		alert('Please select a file.');
+		valid_flag = 1;
 		return false;
 	}
 
 	re = new RegExp(".*xlz$|.*sdlrpx$|.*wsxz$|.*zip$", "i");
 	if(document.form.file.value.search(re) == -1){
 		alert('Choose xlz, sdlrpx, wsxz or zip format.');
+		valid_flag = 1;
 		return false;
 	}
+
+	$(document).on('click', '#run', function() {
+		if (valid_flag === 0){
+			$('#progress').show(500);
+		}
+	});
+
 }
 // Alert when the specified bytes are exceeded
 limit_size = 209715200;
@@ -39,8 +49,10 @@ $(function(){
 <form name="form" enctype="multipart/form-data" method="post">
 <input type="hidden" name="MAX_FILE_SIZE" value="104857600">
 <input name="file" type="file" id="file1" accept=".zip,.sdlrpx,.xlz,.wsxz">
-<input type="submit" name="_upload" value="Upload" onclick="return Valid();">
+<input type="submit" name="_upload" id="run" value="Upload" onclick="return Valid();">
 </form>
+
+<p hidden id="progress"><progress></progress></p>
 
 <hr size="1">
 <h2>README</h2>
@@ -61,6 +73,7 @@ if (isset($_POST['_upload'])) {
 	mkdir("$path/$folder", 0777);
 	$file_fullpath = "$path/$folder/$filename";
 	mainProcess($file_fullpath, $path, $folder, $filename, $cwd);
+	exit;
 }
 
 function mainProcess($file_fullpath, $path, $folder, $filename, $cwd){
@@ -79,9 +92,7 @@ function mainProcess($file_fullpath, $path, $folder, $filename, $cwd){
 		chdir($proc_folder);
 		shell_exec("zip -r \"$filename\" *");
 
-		download($filename); // Download
-
-		exit;
+		download($filename, $proc_folder); // Download
 	} else {
 		//Error
 		echo 'It could not be uploaded' . '<br />';
@@ -97,14 +108,10 @@ function xmllint($files){
 	}
 }
 
-function download($filename){
-	mb_http_output( "pass" ) ;
-	header("Content-Type: application/octet-stream");
-	header("Content-Transfer-Encoding: Binary");
-	header("Content-Length: ".filesize($filename));
-	header('Content-Disposition: attachment; filename*=UTF-8\'\'' . $filename);
-	ob_end_clean();
-	readfile($filename);
+function download($filename, $proc_folder){
+	echo '<hr size="1" color="blue">';
+	echo '<p><strong>Download: </strong><br />';
+	echo "<a href=\"$proc_folder/$filename\">" . "$filename" . '</a>';
 }
 
 function getFiles($path) {
