@@ -47,7 +47,6 @@ $(function(){
 <body>
 <h1>XML-Lint</h1>
 <form name="form" enctype="multipart/form-data" method="post">
-<input type="hidden" name="MAX_FILE_SIZE" value="104857600">
 <input name="file" type="file" id="file1" accept=".zip,.sdlrpx,.xlz,.wsxz">
 <input type="submit" name="_upload" id="run" value="Upload" onclick="return Valid();">
 </form>
