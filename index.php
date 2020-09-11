@@ -13,7 +13,7 @@ function Valid(){
 		return false;
 	}
 
-	re = new RegExp(".*xlz$|.*sdlrpx$|.*wsxz$|.*zip$", "i");
+	re = new RegExp("\.xlz$|\.sdlrpx$|\.wsxz$|\.zip$", "i");
 	if(document.form.file.value.search(re) == -1){
 		alert('Choose xlz, sdlrpx, wsxz or zip format.');
 		valid_flag = 1;
