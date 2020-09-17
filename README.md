@@ -8,3 +8,6 @@ The types of files that will be accepted as uploads are sdlrpx, xlz, wsxz and zi
 - xmllint
 - zip command
 - unzip command
+
+## License
+MIT
