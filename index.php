@@ -54,9 +54,11 @@ $(function(){
 <p hidden id="progress"><progress></progress></p>
 
 <hr size="1">
-<h2>README</h2>
-<li>The types of files that will be accepted as uploads are sdlrpx, xlz, wsxz and zip.</li>
-<li>Execute xmllint on the sdlxliff, xml or xlf files in the above file.</li>
+<details>
+	<summary>README</summary>
+	<li>The types of files that will be accepted as uploads are sdlrpx, xlz, wsxz and zip.</li>
+	<li>Execute xmllint on the sdlxliff, xml or xlf files in the above file.</li>
+</details>
 
 <?php
 $cwd = getcwd();
