@@ -9,6 +9,8 @@ The types of files that will be accepted as uploads are sdlrpx, xlz, wsxz and zi
 - xmllint
 - zip command
 - 7zip command
+- PHP7
+- Windows
 
 ## License
 MIT
