@@ -8,7 +8,7 @@ The types of files that will be accepted as uploads are sdlrpx, xlz, wsxz and zi
 ## Requires  
 - xmllint
 - zip command
--  command
+- 7zip command
 
 ## License
 MIT
