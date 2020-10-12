@@ -82,7 +82,7 @@ function mainProcess($file_fullpath, $path, $folder, $filename, $cwd){
 		$proc_folder = "$path/$folder";
 
 		chdir($proc_folder);
-		shell_exec("unzip \"$filename\"");
+		shell_exec("7z x \"$filename\"");
 		unlink($filename);
 		chdir($cwd);
 
